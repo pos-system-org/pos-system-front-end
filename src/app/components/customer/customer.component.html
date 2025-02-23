@@ -28,7 +28,7 @@
       <input type="text" formControlName="address" class="form-control" placeholder="Please enter your address" >
     </div>
     <div class="d-grid gap-2 mt-5">
-      <button type="submit" class="btn btn-outline-success">Save Customer</button>
+      <button type="submit" class="btn btn-outline-success">{{buttonName}}</button>
     </div>
   </form>
   <div class="table-body">
@@ -37,16 +37,25 @@
       <tr>
         <th scope="col">Customer Id</th>
         <th scope="col">Full Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
         <th scope="col">Address</th>
-        <th scope="col">Salary</th>
+        <th scope="col">Tools</th>
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td></td>
-        <td></td>
+      <tr *ngFor="let customer of customerList">
+        <th scope="row">{{customer?.propertyId}}</th>
+        <td>{{customer?.name}}</td>
+        <td>{{customer?.email}}</td>
+        <td>{{customer?.phone}}</td>
+        <td>{{customer?.address}}</td>
+        <td class="w-full">
+          <div class="w-full d-flex align-items-center justify-content-between">
+            <button (click)="customerDelete(customer.propertyId)">Delete</button>
+            <button (click)="customerUpdate(customer.propertyId)" >Update</button>
+          </div>
+        </td>
       </tr>
       </tbody>
     </table>

@@ -11,7 +11,7 @@
     </div>
   </div>
   <hr>
-  <div class="body-outer">
+  <form [formGroup]="form" (ngSubmit)="formSubmit()"  class="body-outer">
     <div class="mb-3">
       <label class="form-label">product Id</label>
       <input type="text" class="form-control" placeholder="Please enter product id" >
@@ -29,9 +29,9 @@
       <input type="text" class="form-control" placeholder="Please enter qty" >
     </div>
     <div class="d-grid gap-2 mt-5">
-      <button type="button" class="btn btn-outline-success">Save Product</button>
+      <button type="button" class="btn btn-outline-success">{{buttonName}}</button>
     </div>
-  </div>
+  </form>
   <div class="table-body">
     <table class="table">
       <thead>
