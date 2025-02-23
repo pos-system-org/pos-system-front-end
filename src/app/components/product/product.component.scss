@@ -1,0 +1,23 @@
+.outer{
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+}
+.top-outer{
+  display: flex;
+  padding: 20px;
+}
+.right-inner{
+  width: 450px;
+  display: flex;
+  justify-content: space-around;
+}
+.left-inner{
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  padding-right: 50px;
+}
+.body-outer{
+  padding: 20px;
+}
