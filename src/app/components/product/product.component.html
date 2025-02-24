@@ -13,10 +13,6 @@
   <hr>
   <form [formGroup]="form" (ngSubmit)="formSubmit()"  class="body-outer">
     <div class="mb-3">
-      <label class="form-label">product Id</label>
-      <input type="text" class="form-control" placeholder="Please enter product id" >
-    </div>
-    <div class="mb-3">
       <label class="form-label">Description</label>
       <input type="text" class="form-control" placeholder="Please enter description" >
     </div>
@@ -40,6 +36,7 @@
         <th scope="col">Description</th>
         <th scope="col">Unit Price</th>
         <th scope="col">Qty</th>
+        <th scope="col">Tools</th>
       </tr>
       </thead>
       <tbody>

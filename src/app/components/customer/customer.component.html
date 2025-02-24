@@ -5,8 +5,8 @@
         <input type="search"  placeholder="Type to search customer....." style="width: 700px; border-radius: 10px; padding: 10px">
       </div>
       <div class="right-inner ">
-        <button type="button" class="btn btn-success">+ New Customer</button>
-        <button type="button" class="btn btn-success">Back to Home</button>
+        <button type="button" class="btn btn-success" (click)="clearData()">{{btn}}</button>
+        <button type="button" class="btn btn-success" routerLink="/dashboard">Back to Home</button>
       </div>
     </div>
   <hr>
@@ -52,8 +52,8 @@
         <td>{{customer?.address}}</td>
         <td class="w-full">
           <div class="w-full d-flex align-items-center justify-content-between">
-            <button (click)="customerDelete(customer.propertyId)">Delete</button>
-            <button (click)="customerUpdate(customer.propertyId)" >Update</button>
+            <button class="btn btn-danger" (click)="customerDelete(customer.propertyId)">Delete</button>
+            <button class="btn btn-success" (click)="customerUpdate(customer.propertyId)" >Update</button>
           </div>
         </td>
       </tr>

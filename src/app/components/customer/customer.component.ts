@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {CustomerService} from "../../../services/customer-service/customer.service";
 import {CommonModule} from "@angular/common";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-customer',
@@ -9,11 +10,13 @@ import {CommonModule} from "@angular/common";
   imports: [
     ReactiveFormsModule,
     CommonModule,
+    RouterLink,
   ],
   templateUrl: './customer.component.html',
   styleUrl: './customer.component.scss'
 })
 export class CustomerComponent implements OnInit{
+  btn='+ New Customer'
   customerId:any
   buttonName="Save Customer"
   customerList:any[]=[]
@@ -40,6 +43,7 @@ export class CustomerComponent implements OnInit{
       this._customerService.create(jsonData).subscribe({
         next:res=>{
           this.loadTable()
+          this.clear()
           console.log(res)
         },error:err=>{
           console.log(err)
@@ -56,6 +60,7 @@ export class CustomerComponent implements OnInit{
       this._customerService.update(data,this.customerId).subscribe({
         next:res=>{
           this.loadTable()
+          this.clear()
           this.buttonName="Save Customer"
           console.log(res)
         },error:err => {
@@ -70,8 +75,9 @@ export class CustomerComponent implements OnInit{
   }
 
   customerDelete(propertyId: any) {
-    this._customerService.getById(propertyId).subscribe({
+    this._customerService.delete(propertyId).subscribe({
       next:res=>{
+        this.loadTable()
         this.customerId=propertyId
         console.log(res)
       },error:err => {
@@ -103,5 +109,15 @@ export class CustomerComponent implements OnInit{
         console.log(err)
       }
     })
+  }
+  private clear(){
+    this.form.get("name")?.setValue(""),
+    this.form.get("email")?.setValue(""),
+    this.form.get("phone")?.setValue(""),
+    this.form.get("address")?.setValue("")
+  }
+
+  clearData() {
+    this.clear()
   }
 }
