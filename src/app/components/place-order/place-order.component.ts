@@ -4,13 +4,15 @@ import {OrderService} from "../../../services/order-service/order.service";
 import {CustomerService} from "../../../services/customer-service/customer.service";
 import {ProductService} from "../../../services/product-service/product.service";
 import {NgForOf} from "@angular/common";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-place-order',
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    NgForOf
+    NgForOf,
+    RouterLink
   ],
   templateUrl: './place-order.component.html',
   styleUrl: './place-order.component.scss'

@@ -1,0 +1,23 @@
+<div class="main-outer">
+  <div class="inner-wrapper">
+    <div class="heading">
+      <h3>Register</h3>
+    </div>
+    <hr>
+    <form [formGroup]="form" (ngSubmit)="formSubmit()" class="body">
+      <label class="form-label">Email address</label>
+      <input type="email"  class="form-control" placeholder="name@example.com" formControlName="email">
+      <label class="form-label">Password</label>
+      <input type="password" class="form-control" placeholder="please enter your password" formControlName="password">
+    <div class="d-grid mt-4">
+      <button class="btn btn-success" type="submit">Sign-Up</button>
+    </div>
+    </form>
+    <div class="google-outer">
+      <img [src]=imgUrl alt="google" width="50px" style="cursor: pointer" >
+    </div>
+    <div class="have-acc">
+      <p>Already have an account? <a routerLink="/login">SignIn Here</a></p>
+    </div>
+  </div>
+</div>

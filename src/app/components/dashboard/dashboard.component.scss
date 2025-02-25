@@ -1,0 +1,22 @@
+ul{
+  text-decoration: none;
+  list-style-type: none;
+  display: flex;
+}
+li{
+  margin-top: 20px;
+  text-decoration: none;
+  padding: 10px;
+}
+a{
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: #3ea9b2;
+  border-radius: 10px;
+  color: white;
+}
+.active{
+  background-color: #e5d0ea;
+  color: black;
+
+}
