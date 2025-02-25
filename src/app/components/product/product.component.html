@@ -6,26 +6,26 @@
     </div>
     <div class="right-inner ">
       <button type="button" class="btn btn-success">Bulk Upload</button>
-      <button type="button" class="btn btn-success">+ New Product</button>
-      <button type="button" class="btn btn-success">Back to Home</button>
+      <button type="button" class="btn btn-success" (click)="clear()">+ New Product</button>
+      <button type="button" class="btn btn-success" routerLink="/dashboard">Back to Home</button>
     </div>
   </div>
   <hr>
-  <form [formGroup]="form" (ngSubmit)="formSubmit()"  class="body-outer">
+  <form [formGroup]="form" (ngSubmit)="formSubmit()" class="body-outer">
     <div class="mb-3">
       <label class="form-label">Description</label>
-      <input type="text" class="form-control" placeholder="Please enter description" >
+      <input type="text" formControlName="description" class="form-control" placeholder="Please enter description" >
     </div>
     <div class="mb-3">
       <label class="form-label">Unit Price</label>
-      <input type="number" class="form-control" placeholder="Please enter unit price" >
+      <input type="text"  formControlName="unitPrice" class="form-control" placeholder="Please enter unit price" >
     </div>
     <div class="mb-3">
       <label class="form-label">Qty</label>
-      <input type="text" class="form-control" placeholder="Please enter qty" >
+      <input type="text" formControlName="qty"  class="form-control" placeholder="Please enter qty" >
     </div>
     <div class="d-grid gap-2 mt-5">
-      <button type="button" class="btn btn-outline-success">{{buttonName}}</button>
+      <button type="submit" class="btn btn-outline-success">{{buttonName}}</button>
     </div>
   </form>
   <div class="table-body">
@@ -40,11 +40,17 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td></td>
-        <td></td>
+      <tr *ngFor="let product of productList">
+        <th scope="row">{{product?.productId}}</th>
+        <td>{{product?.description}}</td>
+        <td>{{product?.unitPrice}}</td>
+        <td>{{product?.qty}}</td>
+        <td class="w-full">
+          <div class="w-full d-flex align-items-center justify-content-between">
+            <button class="btn btn-danger" (click)="productDelete(product.productId)">Delete</button>
+            <button class="btn btn-success" (click)="productUpdate(product.productId)" >Update</button>
+          </div>
+        </td>
       </tr>
       </tbody>
     </table>

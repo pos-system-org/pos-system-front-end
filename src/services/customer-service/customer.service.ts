@@ -24,9 +24,7 @@ export class CustomerService {
       .set("searchText",searchText)
       .set("page",page)
       .set("size",size)
-    return this._http.get(`${this.url}/api/v1/customers`,{
-      params
-    })
+    return this._http.get(`${this.url}/api/v1/customers`,{params})
   }
   public getById(id:any):Observable<any>{
     return this._http.get(`${this.url}/api/v1/customers/${id}`)
@@ -42,5 +40,9 @@ export class CustomerService {
   }
   public delete(id:any):Observable<any>{
     return this._http.delete(`${this.url}/api/v1/customers/${id}`)
+  }
+
+  public customGetAll():Observable<any>{
+    return this._http.get(`${this.url}/api/v1/customers/customGet`)
   }
 }

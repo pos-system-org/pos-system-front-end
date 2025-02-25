@@ -110,7 +110,7 @@ export class CustomerComponent implements OnInit{
       }
     })
   }
-  private clear(){
+  public clear(){
     this.form.get("name")?.setValue(""),
     this.form.get("email")?.setValue(""),
     this.form.get("phone")?.setValue(""),
