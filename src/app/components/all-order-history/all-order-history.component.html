@@ -1,0 +1,20 @@
+<div class="table-body">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Order Id</th>
+      <th scope="col">Date</th>
+      <th scope="col">Nett Price</th>
+      <th scope="col">Customer</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let order of orderList ">
+      <th scope="row">{{order?.orderId}}</th>
+      <td>{{order?.date}}</td>
+      <td>{{order?.nett}}</td>
+      <td>{{order?.customer}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

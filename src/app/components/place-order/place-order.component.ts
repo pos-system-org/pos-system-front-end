@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {OrderService} from "../../../services/order-service/order.service";
-import {Observable} from "rxjs";
 import {CustomerService} from "../../../services/customer-service/customer.service";
 import {ProductService} from "../../../services/product-service/product.service";
 import {NgForOf} from "@angular/common";
-import {response} from "express";
 
 @Component({
   selector: 'app-place-order',
@@ -22,6 +20,11 @@ export class PlaceOrderComponent implements OnInit {
   productList: any = [];
   customer:any=[]
   product:any[]=[]
+  searchText="";
+  page=0;
+  size=5;
+  orderList:any[]=[]
+
   constructor(
     private orderService: OrderService,
     private customerService: CustomerService,
@@ -41,6 +44,7 @@ export class PlaceOrderComponent implements OnInit {
     order_qty: new FormControl("", [Validators.required]),
   });
 
+
   formSubmit() {
     console.log(this.form.value);
     const jsonData={
@@ -51,7 +55,7 @@ export class PlaceOrderComponent implements OnInit {
     }
     this.orderService.create(jsonData).subscribe({
       next:response=>{
-        console.log(response)
+        this.loadOrder()
       },error:err => {
         console.log(err)
       }
@@ -62,7 +66,6 @@ export class PlaceOrderComponent implements OnInit {
     return new Promise((resolve, reject) => {
       this.customerService.getById(id).subscribe({
         next: response => {
-          console.log(response.data);
           resolve(response.data);
         },
         error: err => {
@@ -77,7 +80,6 @@ export class PlaceOrderComponent implements OnInit {
     return new Promise((resolve, reject) => {
       this.productService.getById(id).subscribe({
         next: response => {
-          console.log(response.data);
           resolve(response.data);
         },
         error: err => {
@@ -91,6 +93,7 @@ export class PlaceOrderComponent implements OnInit {
   ngOnInit(): void {
     this.loadCustomer();
     this.loadProduct();
+    this.loadOrder();
   }
 
   customerChange($event: any) {
@@ -137,5 +140,16 @@ export class PlaceOrderComponent implements OnInit {
       },
       error: err => console.log(err)
     });
+  }
+
+  loadOrder(){
+    this.orderService.getAll(this.searchText, this.page, this.size).subscribe({
+      next:response=>{
+        console.log(response)
+        this.orderList=response.data.dataList
+      },error:err => {
+        console.log(err)
+      }
+    })
   }
 }

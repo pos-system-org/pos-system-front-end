@@ -68,18 +68,18 @@
     <table class="table">
       <thead>
       <tr>
-        <th scope="col">Customer Id</th>
-        <th scope="col">Full Name</th>
-        <th scope="col">Address</th>
-        <th scope="col">Salary</th>
+        <th scope="col">Order Id</th>
+        <th scope="col">Date</th>
+        <th scope="col">Nett Price</th>
+        <th scope="col">Customer</th>
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <th scope="row"></th>
-        <td></td>
-        <td></td>
-        <td></td>
+      <tr *ngFor="let order of orderList ">
+        <th scope="row">{{order?.orderId}}</th>
+        <td>{{order?.date}}</td>
+        <td>{{order?.nett}}</td>
+        <td>{{order?.customer}}</td>
       </tr>
       </tbody>
     </table>

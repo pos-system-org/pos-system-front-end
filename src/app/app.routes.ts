@@ -4,6 +4,7 @@ import {ProductComponent} from "./components/product/product.component";
 import {PlaceOrderComponent} from "./components/place-order/place-order.component";
 import {NotFoundComponent} from "./components/not-found/not-found.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
+import {AllOrderHistoryComponent} from "./components/all-order-history/all-order-history.component";
 
 export const routes: Routes = [
   {path:'',redirectTo:'/dashboard',pathMatch:'full'},
@@ -11,5 +12,6 @@ export const routes: Routes = [
   {path:'customer', component:CustomerComponent},
   {path:'product', component:ProductComponent},
   {path:'place-order', component:PlaceOrderComponent},
+  {path:'all-order-history', component:AllOrderHistoryComponent},
   {path:'**', component:NotFoundComponent}
 ];
